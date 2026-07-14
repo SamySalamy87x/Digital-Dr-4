@@ -38,7 +38,8 @@ jobs:
           from pathlib import Path
           page = Path('_site/index.html')
           html = page.read_text(encoding='utf-8')
-          loader = '<script src="./gift-access.js?v=20260714"></script>\n'</n          if 'gift-access.js' not in html:
+          loader = '<script src="./gift-access.js?v=20260714"></script>\n'
+          if 'gift-access.js' not in html:
               html = html.replace('</body>', loader + '</body>')
           page.write_text(html, encoding='utf-8')
           PY
