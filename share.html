@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Symbio English Pro+</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111f}iframe{display:block;width:100%;height:100%;border:0}</style>
+</head>
+<body>
+<iframe id="app" src="./index.html?v=20260714" title="Symbio English Pro+" allow="microphone; clipboard-write"></iframe>
+<script>
+const frame=document.getElementById('app');
+frame.addEventListener('load',()=>{
+  try{
+    const doc=frame.contentDocument;
+    if(!doc||doc.querySelector('script[data-gift-access]'))return;
+    const script=doc.createElement('script');
+    script.src='./gift-access.js?v=20260714';
+    script.dataset.giftAccess='true';
+    doc.body.appendChild(script);
+  }catch(error){console.error('No fue posible cargar el módulo de cortesía',error)}
+});
+</script>
+</body>
+</html>
