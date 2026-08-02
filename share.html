@@ -7,18 +7,28 @@
 <style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111f}iframe{display:block;width:100%;height:100%;border:0}</style>
 </head>
 <body>
-<iframe id="app" src="./index.html?v=20260714-public" title="Symbio English Pro+" allow="microphone; clipboard-write"></iframe>
+<iframe id="app" src="./index.html?v=20260802-isabel" title="Symbio English Pro+" allow="microphone; clipboard-write"></iframe>
 <script>
 const frame=document.getElementById('app');
 frame.addEventListener('load',()=>{
   try{
     const doc=frame.contentDocument;
-    if(!doc||doc.querySelector('script[data-public-access]'))return;
-    const script=doc.createElement('script');
-    script.src='./public-access.js?v=20260714-public';
-    script.dataset.publicAccess='true';
-    doc.body.appendChild(script);
-  }catch(error){console.error('No fue posible cargar el acceso público',error)}
+    if(!doc)return;
+
+    if(!doc.querySelector('script[data-public-access]')){
+      const publicScript=doc.createElement('script');
+      publicScript.src='./public-access.js?v=20260802-isabel';
+      publicScript.dataset.publicAccess='true';
+      doc.body.appendChild(publicScript);
+    }
+
+    if(!doc.querySelector('script[data-isabel-leadership]')){
+      const leaderScript=doc.createElement('script');
+      leaderScript.src='./leader-isabel.js?v=20260802-isabel';
+      leaderScript.dataset.isabelLeadership='true';
+      doc.body.appendChild(leaderScript);
+    }
+  }catch(error){console.error('No fue posible cargar la versión pública',error)}
 });
 </script>
 </body>
